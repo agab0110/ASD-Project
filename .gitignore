@@ -3,6 +3,9 @@
 *.sr
 *.jar
 
+#file
+jenkinsfile
+
 #directory
 bin/
 .vscode/
