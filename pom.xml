@@ -72,4 +72,11 @@
       </plugins>
     </pluginManagement>
   </build>
+  <distributionManagement>
+    <repository>
+      <id>internal.repo</id>
+      <name>Internal repo</name>
+      <url>file://C:\m2-repo\</url>
+    </repository>
+  </distributionManagement>
 </project>
