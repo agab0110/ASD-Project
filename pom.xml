@@ -74,7 +74,7 @@
     <repository>
       <id>internal.repo</id>
       <name>Internal repo</name>
-      <url>file://C:\m2-repo\</url>
+      <url>file://C:\Users\39347\Desktop\java_programs\monopoli\deploy</url>
     </repository>
   </distributionManagement>
 </project>
