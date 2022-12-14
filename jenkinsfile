@@ -1,7 +1,7 @@
 pipeline {
     agent {
         // Use a Jenkins agent to run the build
-        label 'master'
+        label 'monopoli-job'
     }
     stages {
         stage('Checkout') {
