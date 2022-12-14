@@ -1,0 +1,23 @@
+pipeline {
+    agent {
+        // Use a Jenkins agent to run the build
+        label 'master'
+    }
+    stages {
+        stage('Checkout') {
+            // Check out code from Git
+            steps {
+                git 'https://github.com/agab0110/Monopoli.git'
+            }
+        }
+        stage('Build') {
+            // Build the project with Maven
+            steps {
+                // Specify the Maven tool
+                tool 'Maven 3.8.6'
+                // Run the Maven build
+                sh 'mvn clean install'
+            }
+        }
+    }
+}
