@@ -21,7 +21,7 @@ public class GameBoardPanel extends JPanel {
         this.players = players;
         nameLabels = new ArrayList<>();
 
-        imageLabel = new JLabel(new ImageIcon("src\\gui\\images\\tabellone.jpg"));
+        imageLabel = new JLabel(new ImageIcon("src\\main\\java\\com\\monopoli\\gui\\images\\tabellone.jpg"));
         imageLabel.setBounds(0, 0, 512, 512);
 
         createPawn();

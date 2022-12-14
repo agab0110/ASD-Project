@@ -34,7 +34,7 @@ public class MainFrame extends JFrame {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         panel = new JPanel();
-        img = new ImageIcon("src/gui/images/iniziale.png"); 
+        img = new ImageIcon("src\\main\\java\\com\\monopoli\\gui\\images\\iniziale.png");
         label = new JLabel();
 
         insertPlayerButton = new JButton("Inserisci giocatore");
