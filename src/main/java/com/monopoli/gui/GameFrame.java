@@ -143,7 +143,7 @@ public class GameFrame extends JFrame {
 
     public void throwDice(){
         Random random = new Random();
-        dice = random.nextInt(2,12);
+        dice = random.nextInt(2,13);
 
         JOptionPane.showMessageDialog(
         null,
