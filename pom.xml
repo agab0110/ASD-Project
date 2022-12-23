@@ -28,7 +28,6 @@
   <build>
     <pluginManagement>
       <plugins>
-        
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-checkstyle-plugin</artifactId>
@@ -49,24 +48,25 @@
               </execution>
           </executions>
         </plugin>
-        <reporting>
-          <plugins>
-            <plugin>
-              <groupId>org.jacoco</groupId>
-              <artifactId>jacoco-maven-plugin</artifactId>
-              <reportSets>
-                <reportSet>
-                  <reports>
-                    <!-- select non-aggregate reports -->
-                    <report>report</report>
-                  </reports>
-                </reportSet>
-              </reportSets>
-            </plugin>
-          </plugins>
-        </reporting>
-
       </plugins>
     </pluginManagement>
   </build>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <!-- select non-aggregate reports -->
+              <report>report</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+    </plugins>
+  </reporting>
+  
 </project>
