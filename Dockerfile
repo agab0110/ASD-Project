@@ -1,10 +1,11 @@
-FROM openjdk:8-jdk-alpine
+FROM openjdk:18
 
 WORKDIR /Project
 
 COPY pom.xml .
 COPY src ./src
 
+RUN apt-get update && apt-get install -y maven
 RUN mvn package
 
 EXPOSE 8080
