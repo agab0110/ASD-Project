@@ -4,8 +4,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -141,9 +142,27 @@ public class GameFrame extends JFrame {
         return contractName;
     }
 
-    public void throwDice(){
-        Random random = new Random();
-        dice = random.nextInt(2,13);
+    public void throwDice() {
+        
+        /*Random random = new Random();
+        dice = random.nextInt(2,13);*/
+
+        ArrayList<Integer> numbers = new ArrayList<>();
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(4);
+        numbers.add(6);
+        numbers.add(6);
+        numbers.add(7);
+        numbers.add(8);
+        numbers.add(9);
+        numbers.add(10);
+        numbers.add(11);
+        numbers.add(12);
+
+        Collections.shuffle(numbers);
+
+        dice = numbers.get(0);
 
         JOptionPane.showMessageDialog(
         null,
