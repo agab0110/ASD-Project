@@ -1,3 +1,5 @@
-Progetto per Automated software delivery
+# Progetto per Automated software delivery
 
-Build con maven, utilizzo di checkstyle e pipeline
+# Build con maven
+# Costruzione di una pipeline per build automatica su GitHub (vedere maven.yml)
+# Plugin usati per build: checkstyle e jacoco
