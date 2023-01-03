@@ -6,32 +6,10 @@ name: Maven Package
 on:
   push:
       branches: [ "master" ]
+  pull_request:
+      branches: [ "master" ]
 
 jobs:
-  analyze:
-        name: Analyze
-        runs-on: ubuntu-latest
-
-        strategy:
-          fail-fast: false
-          matrix:
-            language: [ 'java' ]
-
-        steps:
-        - name: Checkout repo
-          uses: actions/checkout@v3
-
-        - name: Inizialize code
-          uses: github/codeql-action/init@v2
-          with:
-            languages: ${{ matrix.language }}
-
-        - name: Autobuild
-          uses: github/codeql-action/autobuild@v1
-
-        - name: Perform Code Analysis
-          uses: github/codeql-action/analyze@v1
-
   build:
     # The type of computer where it works
     runs-on: ubuntu-latest
