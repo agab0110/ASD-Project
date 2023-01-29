@@ -1,14 +1,10 @@
 package com.monopoli;
 
-//import com.monopoli.gui.MainFrame;
-import com.monopoli.ui.MainTerminal;
+import com.monopoli.gui.MainFrame;
 
 public class Main {
     public static void main(String[] args) {
-        /*MainFrame mainFrame = new MainFrame();
-        mainFrame.setVisible(true);*/
-
-        MainTerminal mainTerminal = new MainTerminal();
-        mainTerminal.showMenu();
+        MainFrame mainFrame = new MainFrame();
+        mainFrame.setVisible(true);
     } 
 }
