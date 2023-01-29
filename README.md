@@ -1,4 +1,4 @@
-# Progetto per Automated software delivery
+# Monopoli con GUI e build in Maven
 
 Build con maven<br>
 Costruzione di una pipeline per build automatica su GitHub (vedere maven.yml)<br>
