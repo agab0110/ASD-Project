@@ -15,6 +15,8 @@ import java.util.*;
 public class Menager implements Serializable{
     private List<Player> players;
     private List<Contract> contracts;
+    private List<Card> suddenCards;
+    private List<Card> chanceCards;
     private int numContract;
     public static final long serialVersionUID = 1L;
 
@@ -25,6 +27,8 @@ public class Menager implements Serializable{
     public void constructor(){
         this.players = new ArrayList<>();
         this.contracts = new ArrayList<>();
+        this.suddenCards = new ArrayList<>();
+        this.chanceCards = new ArrayList<>();
     }
 
     /**
@@ -116,6 +120,7 @@ public class Menager implements Serializable{
         }
 
         this.inizializeContracts();
+        this.inizializeCard();
         this.assignContracts(numContract);
     }
 
@@ -173,6 +178,41 @@ public class Menager implements Serializable{
         Contract stazioneOvest = new Contract("Stazione Ovest", 200, 25);
         contracts.add(stazioneOvest); 
     }
+
+    private void inizializeCard() {
+        Card suddenCard1 = new Card("Imprevisto", "Andate fino al largo colombo: se passate dal via ritirate 500 euro", 1);
+        suddenCards.add(suddenCard1);
+        Card suddenCard2 = new Card("Imprevisto", "Andate in prigione direttamente e senza passare dal via", 2);
+        suddenCards.add(suddenCard2);
+        Card suddenCard3 = new Card("Imprevisto", "Fate 3 passi indietro", 3);
+        suddenCards.add(suddenCard3);
+        Card suddenCard4 = new Card("Imprevisto", "Andate fino a via accademia: se passate dal via ritirate 500 euro", 4);
+        suddenCards.add(suddenCard4);
+        Card suddenCard5 = new Card("Imprevisto", "Versate 50 euro per beneficienza", 5);
+        suddenCards.add(suddenCard5);
+        Card suddenCard6 = new Card("Imprevisto", "Andate alla stazione nord: se passate dal via ritirate 500 euro", 6);
+        suddenCards.add(suddenCard6);
+        Card suddenCard7 = new Card("Imprevisto", "Multa di 40 euro per aver guidato senza patente", 7);
+        suddenCards.add(suddenCard7);
+        Card suddenCard8 = new Card("Imprevisto", "Andate fino al parco della vittoria", 8);
+        suddenCards.add(suddenCard8);
+        Card suddenCard9 = new Card("Imprevisto", "Matrimonio in famiglia: spese impreviste 375 euro", 9);
+        suddenCards.add(suddenCard9);
+        Card suddenCard10 = new Card("Imprevisto", "Uscite gratis di prigione", 10);
+        suddenCards.add(suddenCard10);
+        Card suddenCard11 = new Card("Imprevisto", "Maturano le cedole delle vostre cartelle di rendita, ritirate 375 euro", 11);
+        suddenCards.add(suddenCard11);
+        Card suddenCard12 = new Card("Imprevisto", "La banca vi paga gli interessi del vostro conto corrente, ritirate 125 euro", 12);
+        suddenCards.add(suddenCard12);
+        Card suddenCard13 = new Card("Imprevisto", "Andate avanti fino al via", 13);
+        suddenCards.add(suddenCard13);
+        Card suddenCard14 = new Card("Imprevisto", "Avete vinto un terno al lotto: ritirate 250 euro", 14);
+        suddenCards.add(suddenCard14);
+        Card suddenCard15 = new Card("Imprevisto", "Andate in prigione direttamente e senza passare dal via", 15);
+        suddenCards.add(suddenCard15);
+
+        
+    }
     
     /**
      * Method for randomly assigning contracts to all players
@@ -224,6 +264,14 @@ public class Menager implements Serializable{
 
     public List<Contract> getContracts(){
         return contracts;
+    }
+
+    public List<Card> getSuddenCards(){
+        return this.suddenCards;
+    }
+
+    public List<Card> getChanceCards(){
+        return this.chanceCards;
     }
 
     /**
