@@ -19,12 +19,14 @@ public class Player implements Serializable {
     private int money;
     private List<Contract> contracts;
     private int box;
+    private int exitPrisonCard;
 
     public Player(String name, Color color) {
         this.name = name;
         this.color = color;
         contracts = new ArrayList<>();
         this.box = 0;
+        this.exitPrisonCard = 0;
     }
 
     public int getMoney() {
@@ -98,5 +100,17 @@ public class Player implements Serializable {
         if (this.box == 40) {
             this.box = 0;
         }
+    }
+
+    public void addCard() {
+        this.exitPrisonCard++;
+    }
+
+    public void subCard() {
+        this.exitPrisonCard--;
+    }
+
+    public int getExitPrisonCard() {
+        return this.exitPrisonCard;
     }
 }

@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 
 import com.monopoli.app.Contract;
 import com.monopoli.app.Menager;
+import com.monopoli.app.MoneyException;
 import com.monopoli.app.Player;
 
 public class GameFrame extends JFrame {
@@ -191,11 +192,13 @@ public class GameFrame extends JFrame {
 
         if(players.get(GameFrame.i).getBox() == 2 || players.get(GameFrame.i).getBox() == 17 || players.get(GameFrame.i).getBox() == 33) {
             JOptionPane.showMessageDialog(null,
-             menager.getChanceCards().get(0).getDescription(), 
-             menager.getChanceCards().get(0).getTitle(), 
-             JOptionPane.INFORMATION_MESSAGE);
+                menager.getChanceCards().get(0).getDescription(), 
+                menager.getChanceCards().get(0).getTitle(), 
+                JOptionPane.INFORMATION_MESSAGE);
 
-            Collections.shuffle(menager.getChanceCards());
+            doChanceCardAction(menager.getChanceCards().get(0).getId());
+            
+            Collections.shuffle(menager.getChanceCards());            
         }
 
         if(players.get(GameFrame.i).getBox() == 7 || players.get(GameFrame.i).getBox() == 22 || players.get(GameFrame.i).getBox() == 36) {
@@ -204,7 +207,9 @@ public class GameFrame extends JFrame {
              menager.getSuddenCards().get(0).getTitle(), 
              JOptionPane.INFORMATION_MESSAGE);
 
-             Collections.shuffle(menager.getSuddenCards());
+            doSuddenCardAction(menager.getChanceCards().get(0).getId());
+
+            Collections.shuffle(menager.getSuddenCards());
         }
 
         if (players.get(GameFrame.i).getBox() == 30) {
@@ -266,6 +271,207 @@ public class GameFrame extends JFrame {
                 throwDice();
                 updateTimerThread();
             }
+        }
+    }
+
+    private void doChanceCardAction(int id) {
+        switch (id) {
+            case 1:
+                while (players.get(GameFrame.i).getBox() != 1) {
+                    gameBoardPanel.movePlayer();
+                }
+                break;
+            case 2:
+                players.get(GameFrame.i).addMoney(60);
+                break;
+            case 3:
+                players.get(GameFrame.i).addMoney(50);
+                break;
+            case 4:
+                players.get(GameFrame.i).addMoney(25);
+                break;
+            case 5:
+                try {
+                    players.get(GameFrame.i).subMoney(125);
+                } catch (MoneyException e) {
+                    JOptionPane.showMessageDialog(null, 
+                     "Errore: " + e.getMessage(),
+                     "Errore", 
+                     JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+            case 6:
+                players.get(GameFrame.i).addCard();
+                break;
+            case 7:
+                players.get(GameFrame.i).addMoney(250);
+                break;
+            case 8:
+                while (players.get(GameFrame.i).getBox() != 0) {
+                    gameBoardPanel.movePlayer();
+                    players.get(GameFrame.i).addMoney(200);
+                }
+                break;
+            case 9:
+                Object[] options = {"Paga", "Pesca"};
+                int choice = JOptionPane.showOptionDialog(null,
+                                                        "Scegli opzione",
+                                                        "Probabilita'",
+                                                        JOptionPane.YES_NO_OPTION,
+                                                        JOptionPane.QUESTION_MESSAGE,
+                                                        null,
+                                                        options, 
+                                                        options[0]);
+
+                if (choice == JOptionPane.YES_OPTION) {
+                    try {
+                        players.get(GameFrame.i).subMoney(25);
+                    } catch (MoneyException e) {
+                        JOptionPane.showMessageDialog(null, 
+                            "Errore: " + e.getMessage(),
+                            "Errore", 
+                            JOptionPane.ERROR_MESSAGE);
+                    }
+                } else if (choice == JOptionPane.NO_OPTION) {
+                    JOptionPane.showMessageDialog(null,
+                        menager.getSuddenCards().get(0).getDescription(), 
+                        menager.getSuddenCards().get(0).getTitle(), 
+                        JOptionPane.INFORMATION_MESSAGE);
+
+                    doSuddenCardAction(menager.getSuddenCards().get(0).getId());
+                    Collections.shuffle(menager.getSuddenCards());
+                }
+            case 10:
+                players.get(GameFrame.i).addMoney(500);
+                break;
+            case 11:
+                try {
+                    players.get(GameFrame.i).subMoney(250);
+                } catch (MoneyException e) {
+                    JOptionPane.showMessageDialog(null, 
+                    "Errore: " + e.getMessage(),
+                    "Errore", 
+                    JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+            case 12:
+                players.get(GameFrame.i).setStatus(true);
+                turnOver();
+                break;
+            case 13:
+                for (Player player : players) {
+                    if (player != players.get(GameFrame.i)) {
+                        try {
+                            player.subMoney(25);
+                        } catch (MoneyException e) {
+                            JOptionPane.showMessageDialog(null, 
+                                "Errore: " + e.getMessage(),
+                                "Errore", 
+                                JOptionPane.ERROR_MESSAGE);
+                        }
+
+                        players.get(GameFrame.i).addMoney(25);
+                    }
+                }
+                break;
+            case 14:
+                players.get(GameFrame.i).addMoney(125);
+                break;
+            case 15:
+                try {
+                    players.get(GameFrame.i).subMoney(125);
+                } catch (MoneyException e) {
+                    JOptionPane.showMessageDialog(null, 
+                    "Errore: " + e.getMessage(),
+                    "Errore", 
+                    JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void doSuddenCardAction(int id) {
+        switch (id) {
+            case 1:
+                while (players.get(GameFrame.i).getBox() != 24) {
+                        gameBoardPanel.movePlayer();
+                }
+                break;
+            case 2:
+                players.get(GameFrame.i).setStatus(true);
+                break;
+            case 3:
+                // TODO: Fate 3 passi indietro
+                break;
+            case 4:
+                while (players.get(GameFrame.i).getBox() != 11) {
+                    gameBoardPanel.movePlayer();
+                }
+                break;
+            case 5:
+                try {
+                    players.get(GameFrame.i).subMoney(50);
+                } catch (MoneyException e) {
+                    JOptionPane.showMessageDialog(null, 
+                    "Errore: " + e.getMessage(),
+                    "Errore", 
+                    JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+            case 6:
+                while (players.get(GameFrame.i).getBox() != 25) {
+                    gameBoardPanel.movePlayer();
+                }
+                break;
+            case 7:
+                try {
+                    players.get(GameFrame.i).subMoney(40);
+                } catch (MoneyException e) {
+                    JOptionPane.showMessageDialog(null, 
+                    "Errore: " + e.getMessage(),
+                    "Errore", 
+                    JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+            case 8:
+                while (players.get(GameFrame.i).getBox() != 39) {
+                    gameBoardPanel.movePlayer();
+                }
+                break;
+            case 9:
+                try {
+                    players.get(GameFrame.i).subMoney(375);
+                } catch (MoneyException e) {
+                    JOptionPane.showMessageDialog(null, 
+                    "Errore: " + e.getMessage(),
+                    "Errore", 
+                    JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+            case 10:
+                players.get(GameFrame.i).addCard();
+                break;
+            case 11:
+                players.get(GameFrame.i).addMoney(375);
+                break;
+            case 12:
+                players.get(GameFrame.i).addMoney(125);
+                break;
+            case 13:
+                while (players.get(GameFrame.i).getBox() != 0) {
+                    gameBoardPanel.movePlayer();
+                }
+                break;
+            case 14:
+                players.get(GameFrame.i).addMoney(250);
+                break;
+            case 15:
+                players.get(GameFrame.i).setStatus(true);
+                break;
+            default:
+                break;
         }
     }
 }

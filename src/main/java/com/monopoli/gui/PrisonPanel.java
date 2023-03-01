@@ -3,6 +3,7 @@ package com.monopoli.gui;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -15,12 +16,18 @@ public class PrisonPanel extends JPanel {
     private JButton payExitPrisonButton;
     private List<Player> players;
     private Menager menager;
+    private JLabel cardNumber;
 
     public PrisonPanel(Menager menager) {
         this.setLayout(null);
         this.players = menager.getPlayers();
         this.menager = menager;
         this.setBounds(520, 0, 200, 720);
+
+        this.cardNumber = new JLabel();
+
+        cardNumber.setBounds(540, 370, 150, 30);
+        cardNumber.setText("Carte rimaste: " + players.get(GameFrame.i).getExitPrisonCard());
 
         exitPrisonButton = new JButton("<html>Esci di prigione<br> gratutitamente</html>");
         payExitPrisonButton = new JButton("<html>Esci di prigione<br>pagando 50€</html>");
@@ -35,6 +42,7 @@ public class PrisonPanel extends JPanel {
             JOptionPane.INFORMATION_MESSAGE
         );
 
+        this.add(cardNumber);
         this.add(exitPrisonButton);
         this.add(payExitPrisonButton);
 
@@ -44,14 +52,23 @@ public class PrisonPanel extends JPanel {
     private void addAction(Player player) {
         exitPrisonButton.addActionListener(
             e -> {
-                player.setStatus(false);
+                // TODO: gestire l'uscita gratis di prigione con la variabile exitPrisonCard
+                if (player.getExitPrisonCard() <= 0) {
+                    JOptionPane.showMessageDialog(null, 
+                     "Errore: carte uscita gratuita non disponibili",
+                     "Errore", 
+                     JOptionPane.ERROR_MESSAGE);
+                } else {
+                    player.setStatus(false);
+                    player.subCard();
 
-                JPanel panel = new NormalGamePanel(menager);
+                    JPanel panel = new NormalGamePanel(menager);
 
-                GameFrame.getInstance().remove(this);
-                GameFrame.getInstance().add(panel);
-                GameFrame.getInstance().throwDice();
-                panel.setVisible(true);
+                    GameFrame.getInstance().remove(this);
+                    GameFrame.getInstance().add(panel);
+                    GameFrame.getInstance().throwDice();
+                    panel.setVisible(true);
+                }
             }
         );
 
