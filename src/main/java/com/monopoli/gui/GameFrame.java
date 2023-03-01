@@ -3,6 +3,7 @@ package com.monopoli.gui;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import java.awt.Graphics;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,6 +17,7 @@ import javax.swing.JTextField;
 
 import com.monopoli.app.Contract;
 import com.monopoli.app.Menager;
+import com.monopoli.app.MoneyException;
 import com.monopoli.app.Player;
 
 public class GameFrame extends JFrame {
@@ -195,7 +197,9 @@ public class GameFrame extends JFrame {
              menager.getChanceCards().get(0).getTitle(), 
              JOptionPane.INFORMATION_MESSAGE);
 
-            Collections.shuffle(menager.getChanceCards());
+            doChangeCardAction(menager.getChanceCards().get(0).getId());
+            
+            Collections.shuffle(menager.getChanceCards());            
         }
 
         if(players.get(GameFrame.i).getBox() == 7 || players.get(GameFrame.i).getBox() == 22 || players.get(GameFrame.i).getBox() == 36) {
@@ -204,7 +208,9 @@ public class GameFrame extends JFrame {
              menager.getSuddenCards().get(0).getTitle(), 
              JOptionPane.INFORMATION_MESSAGE);
 
-             Collections.shuffle(menager.getSuddenCards());
+            doSuddenCardAction(menager.getChanceCards().get(0).getId());
+
+            Collections.shuffle(menager.getSuddenCards());
         }
 
         if (players.get(GameFrame.i).getBox() == 30) {
@@ -266,6 +272,158 @@ public class GameFrame extends JFrame {
                 throwDice();
                 updateTimerThread();
             }
+        }
+    }
+
+    private void doChangeCardAction(int id) {
+        switch (id) {
+            case 1:
+                // TODO: gestire andare a vicolo corto
+                break;
+            case 2:
+                players.get(GameFrame.i).addMoney(60);
+                break;
+            case 3:
+                players.get(GameFrame.i).addMoney(50);
+                break;
+            case 4:
+                players.get(GameFrame.i).addMoney(25);
+                break;
+            case 5:
+                try {
+                    players.get(GameFrame.i).subMoney(125);
+                } catch (MoneyException e) {
+                    JOptionPane.showMessageDialog(null, 
+                     "Errore: " + e.getMessage(),
+                     "Errore", 
+                     JOptionPane.ERROR_MESSAGE);
+                }
+                // TODO: gestire l'eliminazione del giocatore
+                break;
+            case 6:
+                // TODO: gestire l'uscire gratis di prigione
+                break;
+            case 7:
+                players.get(GameFrame.i).addMoney(250);
+                break;
+            case 8:
+                // TODO: gestire l'andare fino al via
+                break;
+            case 9:
+                // TODO: gestire pagate una multa di 25 euro, oppure prendete un cartoncino dagli imprevisti
+                break;
+            case 10:
+                players.get(GameFrame.i).addMoney(500);
+                break;
+            case 11:
+                try {
+                    players.get(GameFrame.i).subMoney(250);
+                } catch (MoneyException e) {
+                    JOptionPane.showMessageDialog(null, 
+                    "Errore: " + e.getMessage(),
+                    "Errore", 
+                    JOptionPane.ERROR_MESSAGE);
+                }
+                // TODO: gestire l'eliminazione del giocatore
+                break;
+            case 12:
+                // TODO: gestire Andate in prigione direttamente e senza passare dal via
+                break;
+            case 13:
+                // TODO: gestire È il vostro compleanno: ogni giocatore vi regala 25 euro
+                break;
+            case 14:
+                players.get(GameFrame.i).addMoney(125);
+                break;
+            case 15:
+                try {
+                    players.get(GameFrame.i).subMoney(125);
+                } catch (MoneyException e) {
+                    JOptionPane.showMessageDialog(null, 
+                    "Errore: " + e.getMessage(),
+                    "Errore", 
+                    JOptionPane.ERROR_MESSAGE);
+                }
+                // TODO: gestire l'eliminazione del giocatore
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void doSuddenCardAction(int id) {
+        switch (id) {
+            case 1:
+                // TODO: Andate fino al largo colombo: se passate dal via ritirate 200 euro
+                break;
+            case 2:
+                //  TODO: Andate in prigione direttamente e senza passare dal via
+                break;
+            case 3:
+                // TODO: Fate 3 passi indietro
+                break;
+            case 4:
+                // TODO: Andate fino a via accademia: se passate dal via ritirate 200 euro
+                break;
+            case 5:
+                try {
+                    players.get(GameFrame.i).subMoney(50);
+                } catch (MoneyException e) {
+                    JOptionPane.showMessageDialog(null, 
+                    "Errore: " + e.getMessage(),
+                    "Errore", 
+                    JOptionPane.ERROR_MESSAGE);
+                }
+                // TODO: gestire l'eliminazione del giocatore
+                break;
+            case 6:
+                // TODO: Andate alla stazione nord: se passate dal via ritirate 200 euro
+                break;
+            case 7:
+                try {
+                    players.get(GameFrame.i).subMoney(40);
+                } catch (MoneyException e) {
+                    JOptionPane.showMessageDialog(null, 
+                    "Errore: " + e.getMessage(),
+                    "Errore", 
+                    JOptionPane.ERROR_MESSAGE);
+                }
+                // TODO: gestire l'eliminazione del giocatore
+                break;
+            case 8:
+                // TODO: Andate fino al parco della vittoria
+                break;
+            case 9:
+                try {
+                    players.get(GameFrame.i).subMoney(375);
+                } catch (MoneyException e) {
+                    JOptionPane.showMessageDialog(null, 
+                    "Errore: " + e.getMessage(),
+                    "Errore", 
+                    JOptionPane.ERROR_MESSAGE);
+                }
+                // TODO: gestire l'eliminazione del giocatore
+                break;
+            case 10:
+                // TODO: Uscite gratis di prigione
+                break;
+            case 11:
+                players.get(GameFrame.i).addMoney(375);
+                break;
+            case 12:
+                players.get(GameFrame.i).addMoney(125);
+                break;
+            case 13:
+                // TODO: Andate avanti fino al via
+                break;
+            case 14:
+                players.get(GameFrame.i).addMoney(250);
+                break;
+            case 15:
+                // TODO: Andate in prigione direttamente e senza passare dal via
+                break;
+            default:
+                break;
         }
     }
 }
