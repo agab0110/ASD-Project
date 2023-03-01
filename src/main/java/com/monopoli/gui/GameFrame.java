@@ -278,7 +278,13 @@ public class GameFrame extends JFrame {
     private void doChangeCardAction(int id) {
         switch (id) {
             case 1:
-                // TODO: gestire andare a vicolo corto
+                while (players.get(GameFrame.i).getBox() != 1) {
+                    gameBoardPanel.movePlayer();
+
+                    if (players.get(GameFrame.i).getBox() == 0) {
+                        players.get(GameFrame.i).addMoney(200);
+                    }
+                }
                 break;
             case 2:
                 players.get(GameFrame.i).addMoney(60);
