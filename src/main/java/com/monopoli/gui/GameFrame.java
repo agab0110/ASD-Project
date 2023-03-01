@@ -395,16 +395,20 @@ public class GameFrame extends JFrame {
     private void doSuddenCardAction(int id) {
         switch (id) {
             case 1:
-                // TODO: Andate fino al largo colombo: se passate dal via ritirate 200 euro
+                while (players.get(GameFrame.i).getBox() != 24) {
+                        gameBoardPanel.movePlayer();
+                }
                 break;
             case 2:
-                //  TODO: Andate in prigione direttamente e senza passare dal via
+                players.get(GameFrame.i).setStatus(true);
                 break;
             case 3:
                 // TODO: Fate 3 passi indietro
                 break;
             case 4:
-                // TODO: Andate fino a via accademia: se passate dal via ritirate 200 euro
+                while (players.get(GameFrame.i).getBox() != 11) {
+                    gameBoardPanel.movePlayer();
+                }
                 break;
             case 5:
                 try {
@@ -415,10 +419,11 @@ public class GameFrame extends JFrame {
                     "Errore", 
                     JOptionPane.ERROR_MESSAGE);
                 }
-                // TODO: gestire l'eliminazione del giocatore
                 break;
             case 6:
-                // TODO: Andate alla stazione nord: se passate dal via ritirate 200 euro
+                while (players.get(GameFrame.i).getBox() != 25) {
+                    gameBoardPanel.movePlayer();
+                }
                 break;
             case 7:
                 try {
@@ -429,10 +434,11 @@ public class GameFrame extends JFrame {
                     "Errore", 
                     JOptionPane.ERROR_MESSAGE);
                 }
-                // TODO: gestire l'eliminazione del giocatore
                 break;
             case 8:
-                // TODO: Andate fino al parco della vittoria
+                while (players.get(GameFrame.i).getBox() != 39) {
+                    gameBoardPanel.movePlayer();
+                }
                 break;
             case 9:
                 try {
@@ -443,10 +449,9 @@ public class GameFrame extends JFrame {
                     "Errore", 
                     JOptionPane.ERROR_MESSAGE);
                 }
-                // TODO: gestire l'eliminazione del giocatore
                 break;
             case 10:
-                // TODO: Uscite gratis di prigione
+                players.get(GameFrame.i).addCard();
                 break;
             case 11:
                 players.get(GameFrame.i).addMoney(375);
@@ -455,13 +460,15 @@ public class GameFrame extends JFrame {
                 players.get(GameFrame.i).addMoney(125);
                 break;
             case 13:
-                // TODO: Andate avanti fino al via
+                while (players.get(GameFrame.i).getBox() != 0) {
+                    gameBoardPanel.movePlayer();
+                }
                 break;
             case 14:
                 players.get(GameFrame.i).addMoney(250);
                 break;
             case 15:
-                // TODO: Andate in prigione direttamente e senza passare dal via
+                players.get(GameFrame.i).setStatus(true);
                 break;
             default:
                 break;
