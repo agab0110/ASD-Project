@@ -198,6 +198,8 @@ public class GameFrame extends JFrame {
              menager.getChanceCards().get(0).getDescription(), 
              menager.getChanceCards().get(0).getTitle(), 
              JOptionPane.INFORMATION_MESSAGE);
+
+            Collections.shuffle(menager.getChanceCards());
         }
 
         if(players.get(GameFrame.i).getBox() == 7 || players.get(GameFrame.i).getBox() == 22 || players.get(GameFrame.i).getBox() == 36) {
@@ -205,6 +207,8 @@ public class GameFrame extends JFrame {
              menager.getSuddenCards().get(0).getDescription(), 
              menager.getSuddenCards().get(0).getTitle(), 
              JOptionPane.INFORMATION_MESSAGE);
+
+             Collections.shuffle(menager.getSuddenCards());
         }
 
         if (players.get(GameFrame.i).getBox() == 30) {
