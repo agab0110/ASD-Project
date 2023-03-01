@@ -197,7 +197,7 @@ public class GameFrame extends JFrame {
              menager.getChanceCards().get(0).getTitle(), 
              JOptionPane.INFORMATION_MESSAGE);
 
-            doChangeCardAction(menager.getChanceCards().get(0).getId());
+            doChanceCardAction(menager.getChanceCards().get(0).getId());
             
             Collections.shuffle(menager.getChanceCards());            
         }
@@ -275,7 +275,7 @@ public class GameFrame extends JFrame {
         }
     }
 
-    private void doChangeCardAction(int id) {
+    private void doChanceCardAction(int id) {
         switch (id) {
             case 1:
                 while (players.get(GameFrame.i).getBox() != 1) {
