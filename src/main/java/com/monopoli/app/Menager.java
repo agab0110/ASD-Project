@@ -180,17 +180,17 @@ public class Menager implements Serializable{
     }
 
     private void inizializeCards() {
-        Card suddenCard1 = new Card("Imprevisto", "Andate fino al largo colombo: se passate dal via ritirate 500 euro", 1);
+        Card suddenCard1 = new Card("Imprevisto", "Andate fino al largo colombo: se passate dal via ritirate 200 euro", 1);
         suddenCards.add(suddenCard1);
         Card suddenCard2 = new Card("Imprevisto", "Andate in prigione direttamente e senza passare dal via", 2);
         suddenCards.add(suddenCard2);
         Card suddenCard3 = new Card("Imprevisto", "Fate 3 passi indietro", 3);
         suddenCards.add(suddenCard3);
-        Card suddenCard4 = new Card("Imprevisto", "Andate fino a via accademia: se passate dal via ritirate 500 euro", 4);
+        Card suddenCard4 = new Card("Imprevisto", "Andate fino a via accademia: se passate dal via ritirate 200 euro", 4);
         suddenCards.add(suddenCard4);
         Card suddenCard5 = new Card("Imprevisto", "Versate 50 euro per beneficienza", 5);
         suddenCards.add(suddenCard5);
-        Card suddenCard6 = new Card("Imprevisto", "Andate alla stazione nord: se passate dal via ritirate 500 euro", 6);
+        Card suddenCard6 = new Card("Imprevisto", "Andate alla stazione nord: se passate dal via ritirate 200 euro", 6);
         suddenCards.add(suddenCard6);
         Card suddenCard7 = new Card("Imprevisto", "Multa di 40 euro per aver guidato senza patente", 7);
         suddenCards.add(suddenCard7);
@@ -229,17 +229,17 @@ public class Menager implements Serializable{
         chanceCards.add(chanceCard8);
         Card chanceCard9 = new Card("Probabilita'", "Pagate una multa di 25 euro, oppure prendete un cartoncino dagli imprevisti", 9);
         chanceCards.add(chanceCard9);
-        Card chanceCard10 = new Card("Probabilita'", "Siete creditori verso la banca di 500 euro, ritirateli.", 10);
+        Card chanceCard10 = new Card("Probabilita'", "Siete creditori verso la banca di 500 euro, ritirateli", 10);
         chanceCards.add(chanceCard10);
-        Card chanceCard11 = new Card("Probabilita'", "Avete perso una causa: pagate 250 euro.", 11);
+        Card chanceCard11 = new Card("Probabilita'", "Avete perso una causa: pagate 250 euro", 11);
         chanceCards.add(chanceCard11);
-        Card chanceCard12 = new Card("Probabilita'", "Andate in prigione direttamente e senza passare dal via.", 12);
+        Card chanceCard12 = new Card("Probabilita'", "Andate in prigione direttamente e senza passare dal via", 12);
         chanceCards.add(chanceCard12);
-        Card chanceCard13 = new Card("Probabilita'", "È il vostro compleanno: ogni giocatore vi regala 25 euro.", 13);
+        Card chanceCard13 = new Card("Probabilita'", "È il vostro compleanno: ogni giocatore vi regala 25 euro", 13);
         chanceCards.add(chanceCard13);
         Card chanceCard14 = new Card("Probabilita'", "Avete ceduto delle azioni: ricavate 125 euro", 14);
         chanceCards.add(chanceCard14);
-        Card chanceCard15 = new Card("Probabilita'", "Pagate il conto del dottore: 125 euro.", 15);
+        Card chanceCard15 = new Card("Probabilita'", "Pagate il conto del dottore: 125 euro", 15);
         chanceCards.add(chanceCard15);
 
         Collections.shuffle(chanceCards);
