@@ -193,6 +193,24 @@ public class GameFrame extends JFrame {
             }
         }
 
+        if(players.get(GameFrame.i).getBox() == 2 || players.get(GameFrame.i).getBox() == 17 || players.get(GameFrame.i).getBox() == 33) {
+            JOptionPane.showMessageDialog(null,
+             menager.getChanceCards().get(0).getDescription(), 
+             menager.getChanceCards().get(0).getTitle(), 
+             JOptionPane.INFORMATION_MESSAGE);
+
+            Collections.shuffle(menager.getChanceCards());
+        }
+
+        if(players.get(GameFrame.i).getBox() == 7 || players.get(GameFrame.i).getBox() == 22 || players.get(GameFrame.i).getBox() == 36) {
+            JOptionPane.showMessageDialog(null,
+             menager.getSuddenCards().get(0).getDescription(), 
+             menager.getSuddenCards().get(0).getTitle(), 
+             JOptionPane.INFORMATION_MESSAGE);
+
+             Collections.shuffle(menager.getSuddenCards());
+        }
+
         if (players.get(GameFrame.i).getBox() == 30) {
             for (int i = 0; i < 20; i++) {
                 gameBoardPanel.movePlayer();
