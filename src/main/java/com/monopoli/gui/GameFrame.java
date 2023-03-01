@@ -3,7 +3,6 @@ package com.monopoli.gui;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import java.awt.Graphics;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -193,9 +192,9 @@ public class GameFrame extends JFrame {
 
         if(players.get(GameFrame.i).getBox() == 2 || players.get(GameFrame.i).getBox() == 17 || players.get(GameFrame.i).getBox() == 33) {
             JOptionPane.showMessageDialog(null,
-             menager.getChanceCards().get(0).getDescription(), 
-             menager.getChanceCards().get(0).getTitle(), 
-             JOptionPane.INFORMATION_MESSAGE);
+                menager.getChanceCards().get(0).getDescription(), 
+                menager.getChanceCards().get(0).getTitle(), 
+                JOptionPane.INFORMATION_MESSAGE);
 
             doChanceCardAction(menager.getChanceCards().get(0).getId());
             
@@ -280,10 +279,6 @@ public class GameFrame extends JFrame {
             case 1:
                 while (players.get(GameFrame.i).getBox() != 1) {
                     gameBoardPanel.movePlayer();
-
-                    if (players.get(GameFrame.i).getBox() == 0) {
-                        players.get(GameFrame.i).addMoney(200);
-                    }
                 }
                 break;
             case 2:
@@ -304,20 +299,48 @@ public class GameFrame extends JFrame {
                      "Errore", 
                      JOptionPane.ERROR_MESSAGE);
                 }
-                // TODO: gestire l'eliminazione del giocatore
                 break;
             case 6:
-                // TODO: gestire l'uscire gratis di prigione
+                players.get(GameFrame.i).addCard();
                 break;
             case 7:
                 players.get(GameFrame.i).addMoney(250);
                 break;
             case 8:
-                // TODO: gestire l'andare fino al via
+                while (players.get(GameFrame.i).getBox() != 0) {
+                    gameBoardPanel.movePlayer();
+                    players.get(GameFrame.i).addMoney(200);
+                }
                 break;
             case 9:
-                // TODO: gestire pagate una multa di 25 euro, oppure prendete un cartoncino dagli imprevisti
-                break;
+                Object[] options = {"Paga", "Pesca"};
+                int choice = JOptionPane.showOptionDialog(null,
+                                                        "Scegli opzione",
+                                                        "Probabilita'",
+                                                        JOptionPane.YES_NO_OPTION,
+                                                        JOptionPane.QUESTION_MESSAGE,
+                                                        null,
+                                                        options, 
+                                                        options[0]);
+
+                if (choice == JOptionPane.YES_OPTION) {
+                    try {
+                        players.get(GameFrame.i).subMoney(25);
+                    } catch (MoneyException e) {
+                        JOptionPane.showMessageDialog(null, 
+                            "Errore: " + e.getMessage(),
+                            "Errore", 
+                            JOptionPane.ERROR_MESSAGE);
+                    }
+                } else if (choice == JOptionPane.NO_OPTION) {
+                    JOptionPane.showMessageDialog(null,
+                        menager.getSuddenCards().get(0).getDescription(), 
+                        menager.getSuddenCards().get(0).getTitle(), 
+                        JOptionPane.INFORMATION_MESSAGE);
+
+                    doSuddenCardAction(menager.getSuddenCards().get(0).getId());
+                    Collections.shuffle(menager.getSuddenCards());
+                }
             case 10:
                 players.get(GameFrame.i).addMoney(500);
                 break;
@@ -330,13 +353,26 @@ public class GameFrame extends JFrame {
                     "Errore", 
                     JOptionPane.ERROR_MESSAGE);
                 }
-                // TODO: gestire l'eliminazione del giocatore
                 break;
             case 12:
-                // TODO: gestire Andate in prigione direttamente e senza passare dal via
+                players.get(GameFrame.i).setStatus(true);
+                turnOver();
                 break;
             case 13:
-                // TODO: gestire È il vostro compleanno: ogni giocatore vi regala 25 euro
+                for (Player player : players) {
+                    if (player != players.get(GameFrame.i)) {
+                        try {
+                            player.subMoney(25);
+                        } catch (MoneyException e) {
+                            JOptionPane.showMessageDialog(null, 
+                                "Errore: " + e.getMessage(),
+                                "Errore", 
+                                JOptionPane.ERROR_MESSAGE);
+                        }
+
+                        players.get(GameFrame.i).addMoney(25);
+                    }
+                }
                 break;
             case 14:
                 players.get(GameFrame.i).addMoney(125);
@@ -350,7 +386,6 @@ public class GameFrame extends JFrame {
                     "Errore", 
                     JOptionPane.ERROR_MESSAGE);
                 }
-                // TODO: gestire l'eliminazione del giocatore
                 break;
             default:
                 break;
