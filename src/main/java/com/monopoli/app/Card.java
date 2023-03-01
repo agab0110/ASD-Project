@@ -1,9 +1,12 @@
 package com.monopoli.app;
 
 public class Card {
-    String description;
-    int id;
-    public Card(String description, int id) {
+    private String description;
+    private String title;
+    private int id;
+
+    public Card(String title, String description, int id) {
+        this.title = title;
         this.description = description;
         this.id = id;
     }
@@ -13,6 +16,10 @@ public class Card {
 
     public int getId() {
         return id;
+    }
+    
+    public String getTitle() {
+        return title;
     }
     
 }
