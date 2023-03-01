@@ -1,6 +1,8 @@
 package com.monopoli.app;
 
-public class Card {
+import java.io.Serializable;
+
+public class Card implements Serializable {
     private String description;
     private String title;
     private int id;

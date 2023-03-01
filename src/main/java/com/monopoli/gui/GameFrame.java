@@ -143,11 +143,7 @@ public class GameFrame extends JFrame {
     }
 
     public void throwDice() {
-        
-        /*Random random = new Random();
-        dice = random.nextInt(2,13);*/
-
-        ArrayList<Integer> numbers = new ArrayList<>();
+        List<Integer> numbers = new ArrayList<>();
         numbers.add(2);
         numbers.add(3);
         numbers.add(4);
