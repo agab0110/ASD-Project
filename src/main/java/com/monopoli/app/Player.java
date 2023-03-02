@@ -102,6 +102,14 @@ public class Player implements Serializable {
         }
     }
 
+    public void backBox() {
+        this.box--;
+
+        if (this.box < 0) {
+            this.box = 40;
+        }
+    }
+
     public void addCard() {
         this.exitPrisonCard++;
     }
