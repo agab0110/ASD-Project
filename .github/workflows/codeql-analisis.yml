@@ -1,8 +1,8 @@
 name: "CodeQL"
 
 on:
-  push:
-    branches: [ "alessandro" ]
+  pull_request:
+    branches: [ "master" ]
 
   schedule:
     - cron: '40 14 * * 6' # pianificazione del controllo, avverrà ogni sabato alle 14:40
