@@ -62,17 +62,19 @@ public class GameBoardPanel extends JPanel {
     }
 
     public void goBackThreeBox() {
-        if (players.get(GameFrame.i).getBox() < 10) {
-            nameLabels.get(GameFrame.i).setLocation(nameLabels.get(GameFrame.i).getX() + 42, nameLabels.get(GameFrame.i).getY());
-        } else if (players.get(GameFrame.i).getBox() >= 10 && players.get(GameFrame.i).getBox() < 20) {
-            nameLabels.get(GameFrame.i).setLocation(nameLabels.get(GameFrame.i).getX(), nameLabels.get(GameFrame.i).getY() + 42);
-        } else if (players.get(GameFrame.i).getBox() >= 20 && players.get(GameFrame.i).getBox() < 30) {
-            nameLabels.get(GameFrame.i).setLocation(nameLabels.get(GameFrame.i).getX() - 42, nameLabels.get(GameFrame.i).getY());
-        } else if (players.get(GameFrame.i).getBox() >= 30 && players.get(GameFrame.i).getBox() < 40) {
-            nameLabels.get(GameFrame.i).setLocation(nameLabels.get(GameFrame.i).getX(), nameLabels.get(GameFrame.i).getY() - 42);
-        }
+        for (int i = 0; i < 3; i++) {
+            if (players.get(GameFrame.i).getBox() < 10) {
+                nameLabels.get(GameFrame.i).setLocation(nameLabels.get(GameFrame.i).getX() + 42, nameLabels.get(GameFrame.i).getY());
+            } else if (players.get(GameFrame.i).getBox() >= 10 && players.get(GameFrame.i).getBox() < 20) {
+                nameLabels.get(GameFrame.i).setLocation(nameLabels.get(GameFrame.i).getX(), nameLabels.get(GameFrame.i).getY() + 42);
+            } else if (players.get(GameFrame.i).getBox() >= 20 && players.get(GameFrame.i).getBox() < 30) {
+                nameLabels.get(GameFrame.i).setLocation(nameLabels.get(GameFrame.i).getX() - 42, nameLabels.get(GameFrame.i).getY());
+            } else if (players.get(GameFrame.i).getBox() >= 30 && players.get(GameFrame.i).getBox() < 40) {
+                nameLabels.get(GameFrame.i).setLocation(nameLabels.get(GameFrame.i).getX(), nameLabels.get(GameFrame.i).getY() - 42);
+            }
 
-        players.get(GameFrame.i).backBox();
+            players.get(GameFrame.i).backBox();
+        }
     }
 
     public void initializeNameLabel() {
