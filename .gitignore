@@ -6,5 +6,4 @@
 #directory
 bin/
 .vscode/
-javadoc/
 target/
