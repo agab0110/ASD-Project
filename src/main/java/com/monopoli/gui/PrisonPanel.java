@@ -52,13 +52,7 @@ public class PrisonPanel extends JPanel {
     private void addAction(Player player) {
         exitPrisonButton.addActionListener(
             e -> {
-                // TODO: gestire l'uscita gratis di prigione con la variabile exitPrisonCard
-                if (player.getExitPrisonCard() <= 0) {
-                    JOptionPane.showMessageDialog(null, 
-                     "Errore: carte uscita gratuita non disponibili",
-                     "Errore", 
-                     JOptionPane.ERROR_MESSAGE);
-                } else {
+                if (player.getExitPrisonCard() >= 0) {
                     player.setStatus(false);
                     player.subCard();
 
@@ -68,6 +62,11 @@ public class PrisonPanel extends JPanel {
                     GameFrame.getInstance().add(panel);
                     GameFrame.getInstance().throwDice();
                     panel.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, 
+                     "Errore: carte uscita gratuita non disponibili",
+                     "Errore", 
+                     JOptionPane.ERROR_MESSAGE);
                 }
             }
         );
