@@ -403,7 +403,7 @@ public class GameFrame extends JFrame {
                 players.get(GameFrame.i).setStatus(true);
                 break;
             case 3:
-                // TODO: Fate 3 passi indietro
+                gameBoardPanel.goBackThreeBox();
                 break;
             case 4:
                 while (players.get(GameFrame.i).getBox() != 11) {
