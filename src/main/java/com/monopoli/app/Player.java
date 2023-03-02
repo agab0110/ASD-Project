@@ -102,6 +102,10 @@ public class Player implements Serializable {
         }
     }
 
+    /**
+     * Method of moving back the player.
+     * It is used when the suddenCard.id == 3 appears
+     */
     public void backBox() {
         this.box--;
 
