@@ -61,13 +61,13 @@ public class MainFrame extends JFrame {
                     JOptionPane.YES_NO_OPTION
                     );
 
-                if (answer == 0) {
+                if (answer == JOptionPane.YES_OPTION) {
                     menager = Menager.loadMenager();
                     GameFrame gameFrame = new GameFrame(menager);
                     gameFrame.setVisible(true);
                     this.setVisible(false);
                     this.dispose();
-                } else {
+                } else if (answer == JOptionPane.NO_OPTION) {
                     this.setVisible(true);
                 }
             }
