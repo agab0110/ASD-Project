@@ -55,7 +55,7 @@
             <manifest>
               <addClasspath>true</addClasspath>
               <classpathPrefix>target/classes/</classpathPrefix>
-              <mainClass>it.unimol.monopoli.Main</mainClass>
+              <mainClass>com.monopoli.Main</mainClass>
             </manifest>
           </archive>
         </configuration>
