@@ -27,9 +27,9 @@
 
   <distributionManagement>
     <repository>
-      <id>github</id>
-      <name>GitHub agab0110 Apache Maven Packages</name>
-      <url>https://maven.pkg.github.com/agab0110/Monopoli.git</url>
+      <id>deploy.repo</id>
+      <name>Deploy repository</name>
+      <url>file://..\deploy\</url>
     </repository>
   </distributionManagement>
 
