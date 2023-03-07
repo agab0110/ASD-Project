@@ -7,3 +7,4 @@
 bin/
 .vscode/
 target/
+.m2/
